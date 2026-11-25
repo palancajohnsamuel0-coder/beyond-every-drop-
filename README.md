@@ -1,1 +1,1 @@
-# JohnSamuelPalanca.github.io
+# palancajohnsamuel0.github.io

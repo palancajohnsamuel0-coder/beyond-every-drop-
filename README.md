@@ -1,0 +1,1 @@
+# JohnSamuelPalanca.github.io

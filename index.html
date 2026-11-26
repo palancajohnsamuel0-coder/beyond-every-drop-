@@ -1,52 +1,892 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>John Samuel Palanca | Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .card {
-      background: light blue;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: dark blue;
-      margin-bottom: 10px;
-    }
-    p {
-      line-height: 1.6;
-      color: #555;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #0366d6;
-      color: light blue;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PALANCA – Beyond Every Drop</title>
+
+<style>
+:root {
+  --ocean: #073B70;
+  --blue: #087FC1;
+  --turquoise: #00B8B0;
+  --aqua: #69E5D0;
+  --light: #DDFBF6;
+  --white: #FFFFFF;
+  --dark: #12334A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--dark);
+  line-height: 1.7;
+  background: #DDFBF6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+section {
+  padding: 85px 0;
+  scroll-margin-top: 75px;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+
+h2 {
+  color: var(--ocean);
+  font-size: 2.3rem;
+  margin-bottom: 18px;
+}
+
+h3 {
+  color: var(--ocean);
+  margin-bottom: 10px;
+}
+
+p { margin-bottom: 14px; }
+
+.eyebrow {
+  color: var(--turquoise);
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: .8rem;
+  margin-bottom: 18px;
+}
+
+/* NAVIGATION */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #031C38, #073B70, #006D83);
+  box-shadow: 0 4px 20px #031C3840;
+}
+
+nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo span, footer span { color: var(--aqua); }
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: bold;
+  transition: .3s;
+}
+
+nav a:hover { color: var(--aqua); }
+
+.menu {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* UNIQUE DEEP OCEAN HERO */
+
+.hero {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: white;
+  background:
+    radial-gradient(ellipse at 75% 30%, #00B8B055, transparent 35%),
+    radial-gradient(ellipse at 15% 85%, #087FC155, transparent 40%),
+    linear-gradient(125deg, #031C38, #073B70 48%, #006D83);
+  background-size: 150% 150%;
+  animation: oceanShift 14s ease-in-out infinite alternate;
+}
+
+/* Animated oceanographic contour lines */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  opacity: .24;
+  background: repeating-radial-gradient(
+    ellipse at 65% 45%,
+    transparent 0 35px,
+    #69E5D0 36px 37px,
+    transparent 38px 65px
+  );
+  animation: currentFlow 35s linear infinite;
+  pointer-events: none;
+}
+
+/* Underwater glowing light */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -100px;
+  top: 5%;
+  z-index: -1;
+  border-radius: 50%;
+  background: #00B8B0;
+  filter: blur(130px);
+  opacity: .22;
+  animation: oceanGlow 7s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .eyebrow { color: var(--aqua); }
+
+.hero h1 {
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: .95;
+  margin: 20px 0;
+  animation: rise 1s both;
+}
+
+.hero h1 span { color: var(--aqua); }
+
+.hero h2 {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.hero p {
+  max-width: 600px;
+  color: #E5FFFF;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 25px;
+  background: var(--turquoise);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--aqua);
+  color: var(--ocean);
+  transform: translateY(-4px);
+}
+
+/* OCEAN-INSPIRED SECTION BACKGROUNDS */
+
+#introduction, #cycle, #treatment,
+#sustainability, #references {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 90% 10%, #69E5D025, transparent 35%),
+    radial-gradient(ellipse at 5% 90%, #087FC115, transparent 40%),
+    linear-gradient(135deg, #FFFFFF, #DDFBF6, #DDF5FF);
+}
+
+#sources {
+  background:
+    radial-gradient(circle at 10% 20%, #69E5D055, transparent 30%),
+    linear-gradient(145deg, #DDFBF6, #BDEFF3, #DDF5FF);
+}
+
+#sanitation {
+  background:
+    radial-gradient(ellipse at 85% 15%, #00B8B030, transparent 35%),
+    linear-gradient(135deg, #DDFBF6, #C7F4F0, #DDF5FF);
+}
+
+/* INTRODUCTION HIGHLIGHT */
+
+.highlight {
+  max-width: 480px;
+  margin-top: 30px;
+  padding: 35px;
+  border-radius: 22px;
+  color: white;
+  background: linear-gradient(135deg, var(--ocean), var(--turquoise));
+  box-shadow: 0 12px 40px #00B8B044;
+  animation: float 4s ease-in-out infinite;
+}
+
+.highlight h3 { color: white; }
+.highlight p { color: #E5FFFF; }
+
+.number {
+  color: var(--aqua);
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.card {
+  background: linear-gradient(145deg, #FFFFFF, #F0FFFC);
+  backdrop-filter: blur(8px);
+  padding: 27px;
+  border-radius: 18px;
+  border-top: 5px solid var(--turquoise);
+  box-shadow: 0 8px 25px #073B7010;
+  transition: .35s;
+}
+
+.card:nth-child(2) { border-color: var(--blue); }
+.card:nth-child(3) { border-color: var(--aqua); }
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px #073B7025;
+}
+
+.card p {
+  color: #587487;
+  margin: 0;
+}
+
+/* WATER QUALITY */
+
+.dark {
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 90% 10%, #00B8B055, transparent 40%),
+    radial-gradient(ellipse at 10% 90%, #087FC155, transparent 40%),
+    linear-gradient(135deg, #031C38, #073B70, #006D83);
+}
+
+.dark h2, .dark h3 { color: white; }
+.dark .eyebrow { color: var(--aqua); }
+
+.dark .card {
+  background: #FFFFFF15;
+  border: 1px solid #FFFFFF35;
+  backdrop-filter: blur(10px);
+}
+
+.dark .card p { color: #E5FFFF; }
+
+.callout {
+  margin-top: 30px;
+  padding: 25px;
+  border-left: 5px solid var(--aqua);
+  background: #69E5D020;
+  border-radius: 10px;
+}
+
+/* WATER TREATMENT */
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(110deg, #FFFFFF, #F0FFFC);
+  padding: 22px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px #073B7010;
+  border-left: 5px solid var(--turquoise);
+  transition: .3s;
+}
+
+.process {
+  display: grid;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.step:hover { transform: translateX(8px); }
+
+.step span {
+  min-width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--ocean), var(--turquoise));
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.step p { margin: 0; }
+
+/* QUIZ */
+
+#quiz {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 20%, #00B8B055, transparent 35%),
+    radial-gradient(ellipse at 85% 85%, #087FC155, transparent 40%),
+    linear-gradient(135deg, #031C38, #073B70, #008F91);
+  color: white;
+  text-align: center;
+}
+
+#quiz h2 { color: white; }
+
+.quiz-box {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 35px;
+  background: white;
+  color: var(--dark);
+  border-radius: 22px;
+}
+
+#questionNumber {
+  color: var(--turquoise);
+  font-weight: bold;
+}
+
+#question { margin: 20px 0; }
+
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answers button {
+  padding: 14px;
+  background: #F0FFFC;
+  color: var(--ocean);
+  border: 2px solid #DDF5F2;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.answers button:hover { border-color: var(--turquoise); }
+.answers button:disabled { cursor: default; }
+
+.answers button.correct { background: #C8F8E8; }
+.answers button.wrong { background: #FFE1E1; }
+
+#feedback {
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+/* REFERENCES AND FOOTER */
+
+.reference-list {
+  list-style: none;
+  margin-top: 25px;
+}
+
+.reference-list li {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-left: 4px solid var(--turquoise);
+  border-radius: 8px;
+}
+
+.reference-list a {
+  color: var(--ocean);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reference-list a:hover { color: var(--turquoise); }
+
+footer {
+  padding: 55px 0;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, #00B8B044, transparent 55%),
+    linear-gradient(135deg, #031C38, #073B70);
+  color: white;
+}
+
+footer h2 { color: white; }
+footer h3 {
+  color: var(--aqua);
+  letter-spacing: 3px;
+}
+
+/* ANIMATIONS */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes oceanShift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@keyframes currentFlow {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.12); }
+}
+
+@keyframes oceanGlow {
+  from { transform: translate(-30px, 20px); opacity: .15; }
+  to { transform: translate(30px, -20px); opacity: .35; }
+}
+
+/* SCROLL REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .8s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* BACK TO TOP */
+
+#backToTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--turquoise);
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 5px 20px #073B7040;
+  transition: .3s;
+}
+
+#backToTop:hover {
+  background: var(--aqua);
+  color: var(--ocean);
+  transform: translateY(-5px);
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+  .menu { display: block; }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: var(--ocean);
+    flex-direction: column;
+  }
+
+  nav ul.active { display: flex; }
+}
+
+@media(max-width: 600px) {
+  section { padding: 65px 0; }
+  .cards { grid-template-columns: 1fr; }
+  .hero { min-height: 550px; }
+
+  .hero::before { opacity: .12; }
+
+  .hero::after {
+    width: 280px;
+    height: 280px;
+  }
+
+  .quiz-box { padding: 22px; }
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Hi, I'm John Samuel Palanca!</h1>
-    <p>Welcome to my official website hosted on GitHub Pages.</p>
-    <p>I am currently building my site—stay tuned for more updates, projects, and information about me.</p>
-    <a href="https://github.com" class="btn">Visit My GitHub</a>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">PALANCA<span>.</span></a>
+    <button class="menu" id="menu" aria-label="Open navigation">☰</button>
+    <ul id="nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#sources">Water Sources</a></li>
+      <li><a href="#quality">Water Quality</a></li>
+      <li><a href="#treatment">Treatment</a></li>
+      <li><a href="#sanitation">Sanitation</a></li>
+      <li><a href="#sustainability">Sustainability</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <p class="eyebrow">WATER • SCIENCE • SUSTAINABILITY</p>
+    <h1>BEYOND<br><span>EVERY DROP.</span></h1>
+    <h2>The Science of Water, Sanitation, and Sustainability.</h2>
+    <p>Discover the journey of water—from its natural sources to the systems that make it safe, protect public health, and sustain our future.</p>
+    <a href="#introduction" class="btn">EXPLORE THE SCIENCE ↓</a>
   </div>
+</section>
+
+<section id="introduction" class="reveal">
+  <div class="container">
+    <p class="eyebrow">01 / INTRODUCTION</p>
+    <h2>Water is more than a resource.</h2>
+    <p>Water is essential to life, ecosystems, agriculture, industry, and human development. Every community depends on reliable access to clean and safe water.</p>
+    <p>But water does not simply appear when we turn on a faucet. It moves through natural cycles and engineered systems that collect, treat, distribute, use, and manage it.</p>
+    <div class="highlight">
+      <span class="number">71%</span>
+      <h3>of Earth's surface</h3>
+      <p>is covered by water. However, most of it is salt water, and only a small portion is readily accessible freshwater.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sources" class="reveal">
+  <div class="container">
+    <p class="eyebrow">02 / WHERE WATER BEGINS</p>
+    <h2>Understanding Water Sources</h2>
+    <p>Water comes from different natural sources. Understanding them helps us protect and manage our freshwater resources.</p>
+    <div class="cards">
+      <article class="card"><h3>Surface Water</h3><p>Water found on Earth's surface, including rivers, lakes, reservoirs, and streams. It is commonly used for public water supply after treatment.</p></article>
+      <article class="card"><h3>Groundwater</h3><p>Water stored beneath the ground in soil pores and rock formations called aquifers. Wells can provide access to this freshwater source.</p></article>
+      <article class="card"><h3>Springs</h3><p>Natural places where groundwater flows out onto Earth's surface. Spring water still requires quality assessment.</p></article>
+      <article class="card"><h3>Rainwater</h3><p>Water collected from rainfall, often from rooftops. Proper collection, storage, and treatment are important before use.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="cycle" class="reveal">
+  <div class="container">
+    <p class="eyebrow">03 / NATURE'S SYSTEM</p>
+    <h2>The Water Cycle</h2>
+    <p>Water continuously moves between the atmosphere, land, and bodies of water through natural processes.</p>
+    <div class="cards">
+      <article class="card"><h3>01. Evaporation</h3><p>Heat from the sun changes liquid water into water vapor.</p></article>
+      <article class="card"><h3>02. Condensation</h3><p>Water vapor cools and forms tiny droplets in clouds.</p></article>
+      <article class="card"><h3>03. Precipitation</h3><p>Water falls back to Earth as rain or other forms.</p></article>
+      <article class="card"><h3>04. Collection</h3><p>Water gathers in rivers, lakes, oceans, and underground.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="quality" class="dark reveal">
+  <div class="container">
+    <p class="eyebrow">04 / PROTECTING OUR RESOURCES</p>
+    <h2>Water Quality and Contamination</h2>
+    <p>Water pollution can make water unsafe for people and ecosystems.</p>
+    <div class="cards">
+      <article class="card"><h3>Industrial Waste</h3><p>Improper industrial discharges can introduce harmful substances into waterways.</p></article>
+      <article class="card"><h3>Improper Waste Disposal</h3><p>Garbage and plastics can pollute rivers, drainage systems, and coastal environments.</p></article>
+      <article class="card"><h3>Agricultural Runoff</h3><p>Fertilizers, pesticides, and animal waste can enter water bodies through runoff.</p></article>
+      <article class="card"><h3>Untreated Wastewater</h3><p>Pathogens and pollutants in untreated wastewater can threaten public health.</p></article>
+    </div>
+    <div class="callout">
+      <h3>Clear water is not always safe water.</h3>
+      <p>Some contaminants cannot be seen, smelled, or tasted. Water safety requires appropriate testing and treatment.</p>
+    </div>
+  </div>
+</section>
+
+<section id="treatment" class="reveal">
+  <div class="container">
+    <p class="eyebrow">05 / ENGINEERING FOR LIFE</p>
+    <h2>How Water Is Treated</h2>
+    <p>Drinking water treatment uses processes to remove contaminants and make water suitable for its intended use.</p>
+    <div class="process">
+      <article class="step"><span>01</span><div><h3>Intake and Screening</h3><p>Water is collected and large debris is removed using screens.</p></div></article>
+      <article class="step"><span>02</span><div><h3>Coagulation and Flocculation</h3><p>Small suspended particles gather into larger clumps called flocs.</p></div></article>
+      <article class="step"><span>03</span><div><h3>Sedimentation</h3><p>Heavier flocs settle at the bottom of a treatment basin.</p></div></article>
+      <article class="step"><span>04</span><div><h3>Filtration</h3><p>Water passes through filter materials to remove remaining particles.</p></div></article>
+      <article class="step"><span>05</span><div><h3>Disinfection</h3><p>Disinfection reduces disease-causing microorganisms.</p></div></article>
+      <article class="step"><span>06</span><div><h3>Storage and Distribution</h3><p>Treated water is stored and delivered through distribution systems.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="sanitation" class="reveal">
+  <div class="container">
+    <p class="eyebrow">06 / HEALTH AND THE ENVIRONMENT</p>
+    <h2>Sanitation Protects Water</h2>
+    <p>Proper sanitation prevents human waste and other pollutants from contaminating water sources.</p>
+    <div class="cards">
+      <article class="card"><h3>Reduce Disease</h3><p>Proper sanitation helps prevent the spread of waterborne diseases.</p></article>
+      <article class="card"><h3>Protect Groundwater</h3><p>Safe sanitation systems help reduce contamination of groundwater.</p></article>
+      <article class="card"><h3>Protect Ecosystems</h3><p>Wastewater management helps protect rivers and aquatic life.</p></article>
+      <article class="card"><h3>Manage Wastewater</h3><p>Wastewater treatment removes or reduces pollutants before discharge or reuse.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="sustainability" class="reveal">
+  <div class="container">
+    <p class="eyebrow">07 / OUR SHARED RESPONSIBILITY</p>
+    <h2>Every Drop Has a Future</h2>
+    <p>Sustainable water management means using water responsibly while protecting resources for future generations.</p>
+    <div class="cards">
+      <article class="card"><h3>Conserve Water</h3><p>Fix leaks, turn off taps when not needed, and use water efficiently.</p></article>
+      <article class="card"><h3>Protect Watersheds</h3><p>Support forests and natural areas that help protect water sources.</p></article>
+      <article class="card"><h3>Prevent Pollution</h3><p>Dispose of chemicals and household waste properly.</p></article>
+      <article class="card"><h3>Take Part</h3><p>Support community cleanups and water education.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="reveal">
+  <div class="container">
+    <p class="eyebrow">08 / TEST YOUR KNOWLEDGE</p>
+    <h2>How Much Do You Know About Water?</h2>
+    <p>Answer the questions and see what you have learned.</p>
+    <div class="quiz-box">
+      <p id="questionNumber">QUESTION 1 OF 5</p>
+      <h3 id="question"></h3>
+      <div class="answers" id="answers"></div>
+      <p id="feedback"></p>
+      <button class="btn" id="next" hidden>Next Question →</button>
+      <p id="score"></p>
+    </div>
+  </div>
+</section>
+
+<section id="references" class="reveal">
+  <div class="container">
+    <p class="eyebrow">09 / LEARN MORE</p>
+    <h2>References and Further Reading</h2>
+    <ul class="reference-list">
+      <li><a href="https://www.denr.gov.ph/" target="_blank" rel="noopener">DENR – Department of Environment and Natural Resources</a></li>
+      <li><a href="https://doh.gov.ph/" target="_blank" rel="noopener">DOH – Department of Health</a></li>
+      <li><a href="https://www.nwrb.gov.ph/" target="_blank" rel="noopener">NWRB – National Water Resources Board</a></li>
+      <li><a href="https://www.usgs.gov/special-topics/water-science-school" target="_blank" rel="noopener">USGS Water Science School</a></li>
+      <li><a href="https://www.who.int/health-topics/water-sanitation-and-hygiene-wash" target="_blank" rel="noopener">WHO – Water and Sanitation</a></li>
+      <li><a href="https://lawphil.net/statutes/repacts/ra2004/ra_9275_2004.html" target="_blank" rel="noopener">Republic Act 9275 – Philippine Clean Water Act of 2004</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h2>PALANCA<span>.</span></h2>
+    <h3>BEYOND EVERY DROP.</h3>
+    <p>The Science of Water, Sanitation, and Sustainability.</p>
+    <p>© 2026 PALANCA Advocacy Project</p>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+// MOBILE NAVIGATION
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+
+menu.onclick = () => nav.classList.toggle("active");
+
+nav.querySelectorAll("a").forEach(a =>
+  a.onclick = () => nav.classList.remove("active")
+);
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el =>
+  observer.observe(el)
+);
+
+// BACK TO TOP
+document.getElementById("backToTop").onclick = () =>
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+// QUIZ
+const questions = [
+  {
+    q: "What percentage of Earth's surface is covered by water?",
+    a: ["51%", "61%", "71%", "81%"],
+    c: 2
+  },
+  {
+    q: "Where is groundwater stored?",
+    a: ["Clouds", "Aquifers", "Oceans", "Atmosphere"],
+    c: 1
+  },
+  {
+    q: "What process changes liquid water into vapor?",
+    a: ["Condensation", "Filtration", "Evaporation", "Precipitation"],
+    c: 2
+  },
+  {
+    q: "Which treatment process reduces harmful microorganisms?",
+    a: ["Screening", "Disinfection", "Sedimentation", "Collection"],
+    c: 1
+  },
+  {
+    q: "What is one purpose of proper sanitation?",
+    a: ["Increase pollution", "Waste water", "Protect public health", "Contaminate rivers"],
+    c: 2
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+const question = document.getElementById("question");
+const answers = document.getElementById("answers");
+const feedback = document.getElementById("feedback");
+const next = document.getElementById("next");
+
+function showQuestion() {
+  answered = false;
+  const item = questions[current];
+
+  document.getElementById("questionNumber").textContent =
+    `QUESTION ${current + 1} OF ${questions.length}`;
+
+  question.textContent = item.q;
+  answers.innerHTML = "";
+  feedback.textContent = "";
+  next.hidden = true;
+
+  item.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.onclick = () => checkAnswer(index);
+    answers.appendChild(button);
+  });
+}
+
+function checkAnswer(index) {
+  if (answered) return;
+  answered = true;
+
+  const correct = questions[current].c;
+  const buttons = answers.querySelectorAll("button");
+
+  buttons.forEach((button, i) => {
+    button.disabled = true;
+
+    if (i === correct) button.classList.add("correct");
+    if (i === index && i !== correct) button.classList.add("wrong");
+  });
+
+  if (index === correct) {
+    score++;
+    feedback.textContent = "Correct! Great job!";
+  } else {
+    feedback.textContent =
+      "Not quite! The correct answer is " +
+      questions[current].a[correct] + ".";
+  }
+
+  next.hidden = false;
+}
+
+function advance() {
+  current++;
+
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    question.textContent = "Quiz Completed!";
+    answers.innerHTML = "";
+    feedback.textContent =
+      `You scored ${score} out of ${questions.length}!`;
+
+    document.getElementById("questionNumber").textContent = "YOUR RESULTS";
+
+    next.textContent = "Try Again";
+    next.onclick = restartQuiz;
+  }
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  next.textContent = "Next Question →";
+  next.onclick = advance;
+  showQuestion();
+}
+
+next.onclick = advance;
+
+showQuestion();
+</script>
+
 </body>
 </html>
